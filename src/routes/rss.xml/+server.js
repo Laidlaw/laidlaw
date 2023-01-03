@@ -26,7 +26,7 @@ export async function GET({ fetch }) {
 			title: post.title,
 			url: SITE_URL + `/${post.slug}`,
 			date: post.date,
-			description: post.htmlDescription.toString()
+			description: htmlDescription.toString()
 		});
 	});
 
