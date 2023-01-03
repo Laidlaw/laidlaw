@@ -41,6 +41,14 @@
 >
 	<div class="flex flex-col-reverse items-start sm:flex-row">
 		<div class="flex flex-col pr-8">
+			<h1 class="mb-6 text-3xl tracking-tight text-black dark:text-white md:text-5xl">{SITE_TITLE}</h1>
+			<p class="mb-4 text-gray-500 dark:text-gray-300">Welcome to my blog-in-progress.</p>
+			<p class="mb-4 text-gray-700 dark:text-gray-200">I started it in January '23 as a way to organize my thoughts in a public setting. If you want to know little more about me, look here. If you want to work with me, look here.</p>
+			<p class="mb-4 text-gray-600 dark:text-gray-400">Thanks!</p>
+
+		</div>
+
+		<!--<div class="flex flex-col pr-8">
 			<h1 class="mb-3 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 				This is
 
@@ -52,42 +60,37 @@
 				!
 			</h1>
 			<h2 class="mb-4 text-gray-700 dark:text-gray-200">
-				An opinionated blog starter for <span class="font-semibold"
-					>SvelteKit + Tailwind + Netlify/Vercel.</span
-				> Updated for
-				<a href="https://github.com/sveltejs/kit/"
-					>SvelteKit 1.0</a
-				>!
+				My bespoke Github-powered personal site. Total overkill but screw it.
 			</h2>
 			<p class="mb-16 text-gray-600 dark:text-gray-400">
 				<a href={REPO_URL}>View source and feature list here!</a>
 			</p>
-		</div>
+		</div>-->
 		<!-- <div
 				class="w-[80px] h-[80px] rounded-full sm:w-[176px] sm:h-[136px] relative mb-8 sm:mb-0 mr-auto bg-cyan-300 bg-opacity-25"
 			/> -->
 	</div>
 
 	<section class="w-full mb-16">
-		<h3 class="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
-			Featured Posts
+		<h3 class="mb-6 text-2xl tracking-tight text-gray-300 dark:text-gray-200 md:text-4xl">
+			Areas of Interest
 		</h3>
-		<div class="flex flex-col gap-6 md:flex-row">
-			<FeatureCard title="Welcome to swyxkit 2022!" href="/welcome" stringData="Jan 2022" />
+		<!-- <div class="flex flex-col gap-6 md:flex-row">
+			<FeatureCard title="Explorations in Noomorphology" href="/Noomorphology" stringData="Dec 2022" />
 			<FeatureCard
 				title="Moving to a GitHub CMS"
 				href="/moving-to-a-github-cms"
 				stringData="Jan 2022"
 			/>
 			<FeatureCard title="HTML Ipsum demo" href="/moo" stringData="Jan 2022" />
-		</div>
+		</div> -->
 	</section>
 	<!-- <section class="w-full mb-16">
 		<pre>{JSON.stringify(speaking, null, 2)}</pre>
 	</section> -->
 	<section class="w-full mb-8">
-		<h3 id="latest" class="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
-			Latest Posts
+		<h3 id="latest" class="mb-6 text-2xl tracking-tight text-gray-500 dark:text-white md:text-4xl">
+			Stream
 		</h3>
 		<ul class="space-y-2 text-white">
 			{#each items as item (item.slug)}

@@ -43,7 +43,7 @@
 	<div
 		class="bg mt-2 flex w-full justify-between border-red sm:flex-col sm:items-start md:flex-row md:items-center"
 	>
-		<p class="flex items-center text-sm text-gray-700 dark:text-gray-300">swyx</p>
+		<p class="flex items-center text-sm text-gray-700 dark:text-gray-300">alan</p>
 		<p class="min-w-32 flex items-center text-sm text-gray-600 dark:text-gray-400 md:mt-0">
 			<a href={json.ghMetadata.issueUrl} rel="external" class="no-underline" target="_blank">
 				<span class="mr-4 font-mono text-xs text-gray-700 text-opacity-70 dark:text-gray-300"
@@ -62,6 +62,15 @@
 </article>
 <div class="mx-auto max-w-2xl">
 	<div class="prose mb-12 border-t border-b border-blue-800 p-4 dark:prose-invert">
+		<p>Have some thoughts on this posts?</p>
+		<a 	class="flex justify-center border-y border-blue-700 p-4 no-underline hover:text-yellow-700 dark:hover:text-yellow-200 sm:inline sm:rounded-xl sm:border-x"
+			href="mailto:alanlaidlaw@gmail.com?subject=Re: {json.title}">Reply with an email</a> 
+	</div>
+	<Newsletter />
+</div>
+<!-- 
+<div class="mx-auto max-w-2xl">
+	<div class="prose mb-12 border-t border-b border-blue-800 p-4 dark:prose-invert">
 		{#if json.ghMetadata.reactions.total_count > 0}
 			Reactions: <Reactions
 				issueUrl={json.ghMetadata.issueUrl}
@@ -76,9 +85,9 @@
 		<Comments ghMetadata={json.ghMetadata} />
 	</div>
 
-	<Newsletter />
+	
 </div>
-
+-->
 <style>
 	/* https://ryanmulligan.dev/blog/layout-breakouts/ */
 		.swyxcontent {
