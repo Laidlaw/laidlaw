@@ -68,6 +68,7 @@
 	</div>
 	<Newsletter />
 </div>
+
 <!-- 
 <div class="mx-auto max-w-2xl">
 	<div class="prose mb-12 border-t border-b border-blue-800 p-4 dark:prose-invert">
