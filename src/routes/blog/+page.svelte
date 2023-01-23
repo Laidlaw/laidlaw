@@ -1,12 +1,13 @@
 <script>
-	import { browser } from '$app/environment';
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	// import { browser } from '$app/environment';
+	// import { goto } from '$app/navigation';
+	// import { page } from '$app/stores';
 	import { queryParam } from "sveltekit-search-params";
 
 	import { SITE_TITLE, POST_CATEGORIES } from '$lib/siteConfig';
 
 	import IndexCard from '../../components/IndexCard.svelte';
+	import MostPopular from './MostPopular.svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -15,36 +16,64 @@
 	/** @type {import('$lib/types').ContentItem[]} */
 	$: items = data.items;
 
-	let selectedCategories = queryParam("show", {
-		encode: (arr)=> arr?.toString(),
-		decode: (str)=> str?.split(",")?.filter((e) => e) ?? [],
+	// https://github.com/paoloricciuti/sveltekit-search-params#how-to-use-it
+	/** @type import('svelte/store').Writable<String[] | null> */
+	let selectedCategories = queryParam(
+		'show', 
+		{
+			encode: (arr)=> arr?.toString(),
+			decode: (str)=> str?.split(",")?.filter((e) => e) ?? []
+		},
+		{ debounceHistory: 500 }
+	);
+	let search = queryParam('filter', ssp.string(), {
+		debounceHistory: 500
 	});
-	let search = queryParam("filter");
+
 	let inputEl;
 
 	function focusSearch(e) {
 		if (e.key === '/' && inputEl) inputEl.select();
 	}
 
+	// https://github.com/leeoniya/uFuzzy#options
+	// we know this has js weight, but we tried lazyloading and it wasnt significant enough for the added complexity
+	// https://github.com/sw-yx/swyxkit/pull/171
+	// this will be slow if you have thousands of items, but most people don't
 	let isTruncated = items?.length > 20;
-	$: list = items
-		.filter((item) => {
-			if ($selectedCategories?.length) {
+	
+	
+	
+	// we are lazy loading a fuzzy search function
+	// with a fallback to a simple filter function
+	let loaded = false;
+	const filterCategories = async (_items, _, s) => {
+		console.log('filtering', $selectedCategories?.length)
+		if (!$selectedCategories?.length) return _items;
+		return _items
+			.filter((item) => {
 				return $selectedCategories
 					.map((element) => {
 						return element.toLowerCase();
 					})
 					.includes(item.category.toLowerCase());
-			}
-			return true;
-		})
-		.filter((item) => {
-			if ($search) {
-				return item.title.toLowerCase().includes($search.toLowerCase());
-			}
-			return true;
-		})
-		.slice(0, isTruncated ? 2 : items.length);
+			})
+			.filter((item) => item.toString().toLowerCase().includes(s));
+	};
+	$: searchFn = filterCategories;
+	function loadsearchFn() {
+		if (loaded) return;
+		import('./fuzzySearch').then((fuzzy) => {
+			searchFn = fuzzy.fuzzySearch;
+			loaded = true;
+		});
+	}
+	if ($search) loadsearchFn()
+	/** @type import('$lib/types').ContentItem[]  */
+	let list;
+	$: searchFn(items, $selectedCategories, $search).then(_items => list = _items);
+
+	// .slice(0, isTruncated ? 2 : items.length);
 </script>
 
 <svelte:head>
@@ -68,6 +97,7 @@
 			type="text"
 			bind:value={$search}
 			bind:this={inputEl}
+			on:focus={loadsearchFn}
 			placeholder="Hit / to search"
 			class="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
 		/><svg
@@ -112,20 +142,14 @@
 	{/if}
 
 	<!-- you can hardcode yourmost popular posts or pinned post here if you wish -->
-	{#if !$search}
-		<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
-			Most Popular
-		</h3>
-		<IndexCard href="/welcome" title="Welcome to swyxkit!" stringData="123,456 views">
-			This is swyx's preferred starter for Svelte projects!
-		</IndexCard>
-
+	{#if !$search && !$selectedCategories?.length}
+		<MostPopular />
 		<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
 			All Posts
 		</h3>
 	{/if}
 
-	{#if list.length}
+	{#if list?.length}
 		<ul class="">
 			{#each list as item}
 				<li class="mb-8 text-lg">
@@ -137,8 +161,13 @@
 						ghMetadata={item.ghMetadata}
 						{item}
 					>
-						{item.description}
-						
+						{#if item.highlightedResults}
+							<span class="italic">
+								{@html item.highlightedResults}
+							</span>
+						{:else}
+							{item.description}
+						{/if}
 					</IndexCard>
 				</li>
 			{/each}
@@ -147,7 +176,7 @@
 			<div class="flex justify-center">
 				<button
 					on:click={() => (isTruncated = false)}
-					class="inline-block p-4 text-lg font-bold tracking-tight text-black bg-blue-100 rounded hover:text-yellow-900 dark:bg-blue-900 dark:text-white hover:dark:text-yellow-200 md:text-2xl"
+					class="inline-block rounded bg-blue-100 p-4 text-lg font-bold tracking-tight text-black hover:text-yellow-900 dark:bg-blue-900 dark:text-white hover:dark:text-yellow-200 md:text-2xl"
 				>
 					Load More Posts...
 				</button>
@@ -158,7 +187,7 @@
 			No posts found for
 			<code>{$search}</code>.
 		</div>
-		<button class="p-2 bg-slate-500" on:click={() => ($search = '')}>Clear your search</button>
+		<button class="bg-slate-500 p-2" on:click={() => ($search = '')}>Clear your search</button>
 	{:else}
 		<div class="prose dark:prose-invert">No blogposts found!</div>
 	{/if}
