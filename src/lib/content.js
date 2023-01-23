@@ -127,7 +127,8 @@ export async function getContent(providedFetch, slug) {
 				function youtube_parser(url) {
 					var rx =
 						/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
-					return url.match(rx)[1];
+					if (url.match(rx)) return url.match(rx)[1];
+					return url.slice(-11);
 				}
 				const videoId = x.startsWith('https://') ? youtube_parser(x) : x;
 				return `<iframe
@@ -234,9 +235,7 @@ function parseIssue(issue) {
 
 	/** @type {string[]} */
 	let tags = [];
-	if (data.tags) tags = Array.isArray(data.tags) ? data.tags : [data.tags];
-	tags = tags.map((tag) => tag.toLowerCase());
-	// console.log(slug, tags);
+	if (data.tags) tags = Array.isArray(data.tags) ? data.tags : data.tags.split(',').map(x => x.trim());
 
 	return {
 		type: 'blog', // futureproof in case you want to add other types of content
@@ -245,7 +244,7 @@ function parseIssue(issue) {
 		title,
 		subtitle: data.subtitle,
 		description,
-		category: data.category?.toLowerCase() || 'blog',
+		category: data.category?.toLowerCase() || 'note', // all posts assumed to be "note"s unless otherwise specified
 		tags,
 		image: data.image ?? data.cover_image,
 		canonical: data.canonical, // for canonical URLs of something published elsewhere

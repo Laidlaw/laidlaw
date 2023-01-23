@@ -10,8 +10,7 @@
 		DEFAULT_OG_IMAGE,
 		MY_TWITTER_HANDLE
 	} from '$lib/siteConfig';
-	// export const prerender = true; // index page is most visited, lets prerender
-
+	
 
 	/** @type {import('./$types').PageData} */
 	export let data;
