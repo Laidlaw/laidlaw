@@ -90,5 +90,5 @@
 	</section> -->
 
 	<LatestPosts {items} />
-	<Newsletter />
+	<!--<Newsletter />-->
 </div>

@@ -143,9 +143,9 @@
 
 	<!-- you can hardcode yourmost popular posts or pinned post here if you wish -->
 	{#if !$search && !$selectedCategories?.length}
-		<MostPopular />
+		<!-- <MostPopular /> -->
 		<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
-			All Posts
+			All Notes
 		</h3>
 	{/if}
 

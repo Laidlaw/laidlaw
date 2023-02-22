@@ -10,7 +10,7 @@
           id="latest"
           class="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl"
       >
-          Latest Posts
+          Issues
       </h3>
       <ul class="space-y-2 text-white">
           {#each items as item (item.slug)}
