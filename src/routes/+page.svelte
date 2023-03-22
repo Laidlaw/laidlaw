@@ -10,7 +10,6 @@
 		DEFAULT_OG_IMAGE,
 		MY_TWITTER_HANDLE
 	} from '$lib/siteConfig';
-	
 
 	/** @type {import('./$types').PageData} */
 	export let data;
