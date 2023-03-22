@@ -1,0 +1,2 @@
+- As *Food*: Take these posts with a grain of salt. They are raw material, not treated for consumption as much as experimentation.
+- As *Performance*: The stage is empty. These posts are just calisthenics.  Exercise for the main event.
