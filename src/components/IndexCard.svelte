@@ -22,28 +22,33 @@
 		<p class="text-gray-600 mb-2 break-words sm:break-words dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-100">
 			<slot />
 		</p>
-		<div class="flex justify-between items-center gap-1 text-left text-gray-500 sm:justify-start sm:flex-row sm:gap-4 md:mb-0 md:text-sm">
-			<!-- {JSON.stringify(item.readingTime)} -->
-			<p>{stringData}</p>
-			{#if item?.readingTime}
-				<p class="hidden sm:inline-block">{item?.readingTime}</p>
-			{/if}
-			<!-- comment this in if you have multiple categories -->
-			<span class="px-4 max-h-6 flex items-center capitalize bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-400">
-				{item?.category || 'note'}
-			</span>
-			{#if item?.tags?.length}
-			<div class="hidden md:block flex-1">
-				{#each item.tags as tag}
-					<span class="px-1">
-						#{tag}
-					</span>
-				{/each}
+		<div class=" text-left text-gray-500 sm:justify-start sm:flex-row sm:gap-4 md:mb-0 text-sm">
+			<div class="flex md:justify-between items-center gap-1 md:mb-2">
+				<!-- {JSON.stringify(item.readingTime)} -->
+				<p>{stringData}</p>
+				{#if item?.readingTime}
+					<p class="hidden sm:inline-block">{item?.readingTime}</p>
+				{/if}
+				<!-- comment this in if you have multiple categories -->
+				<span class="px-4 max-h-6 flex items-center capitalize bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-400">
+					{item?.category || 'note'}
+				</span>
 			</div>
-			{/if}
-			{#if ghMetadata && ghMetadata.reactions.total_count}
-				<p class="">{ghMetadata.reactions.total_count} ♥</p>
-			{/if}
+			<div>
+				{#if item?.tags?.length}
+				<hr/>
+				<div class="hidden md:inline-block md:mt-2 flex flex-wrap">
+					{#each item.tags as tag}
+						<span class="md:mr-2 max-h-6 items-center capitalize dark:text-gray-400">
+							{tag}
+						</span>
+					{/each}
+				</div>
+				{/if}
+				{#if ghMetadata && ghMetadata.reactions.total_count}
+					<p class="">{ghMetadata.reactions.total_count} ♥</p>
+				{/if}
+			</div>
 		</div>
-	</div></a
->
+	</div>
+</a>

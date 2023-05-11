@@ -6,12 +6,12 @@
   </script>
   
   <section class="mb-8 w-full">
-      <h3
+     <!--- <h3
           id="latest"
           class="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl"
       >
           Issues
-      </h3>
+      </h3>-->
       <ul class="space-y-2 text-white">
           {#each items as item (item.slug)}
               <li>

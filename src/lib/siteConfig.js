@@ -2,7 +2,7 @@ export const SITE_URL = 'https://alanlaidlaw.com';
 export const APPROVED_POSTERS_GH_USERNAME = ['Laidlaw'];
 export const GH_USER_REPO = 'Laidlaw/laidlaw'; // used for pulling github issues and offering comments
 export const SITE_TITLE = 'Alan Laidlaw';
-export const SITE_DESCRIPTION = "Personal Site";
+export const SITE_DESCRIPTION = "A blog about software development, technology, and life.";
 export const DEFAULT_OG_IMAGE =
 	'https://user-images.githubusercontent.com/6764957/147861359-3ad9438f-41d1-47c8-aa05-95c7d18497f0.png';
 export const MY_TWITTER_HANDLE = 'alanlaidlaw';

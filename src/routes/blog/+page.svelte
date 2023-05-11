@@ -76,21 +76,26 @@
 </script>
 
 <svelte:head>
-	<title>{SITE_TITLE} Blog Index</title>
-	<meta name="description" content={`Latest ${SITE_TITLE} posts`} />
+	<title>{SITE_TITLE}'s Grandins</title>
+	<meta name="description" content={`${SITE_TITLE}'s Grandins`} />
 </svelte:head>
 
 <svelte:window on:keyup={focusSearch} />
 
-<section class="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center px-4 sm:px-8">
-	<h1 class="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
-		A Chapbook
-	</h1>
-	<p class="mb-4 text-gray-600 dark:text-gray-400">
-			<Motivations />
-		    In total, I've written {items.length} articles on my blog. Use the search below to
-		filter by title.
-	</p>
+<section class="mx-auto flex max-w-5xl flex-col items-start justify-center px-4 sm:px-8">
+	<div class="relative mx-auto md:flex w-full max-w-5xl items-center md:justify-between border-gray-200
+	bg-gray-50 bg-opacity-60 py-8 text-gray-900 dark:border-gray-700 dark:bg-gray-900
+	dark:text-gray-100">
+		<h1 class="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-3xl pr-8">
+			<a href="/blog">Grandins</a>
+			
+		</h1>
+		<p class="mb-4 text-gray-500 dark:text-gray-400">
+				<!-- <Motivations /> -->
+				Named after <b>Temple Grandin</b>, these are little nuggets of informal synthesis. There are {items.length} of them.
+		</p>
+	</div>
+	
 	<div class="relative mb-4 w-full">
 		<input
 			aria-label="Search articles"
@@ -147,13 +152,13 @@
 	<!-- killing MostPo section for now. -->
 		<!-- <MostPopular /> -->
 
-		<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
+		<!--<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
 			All Posts
-		</h3>
+		</h3>-->
 	{/if}
 
 	{#if list?.length}
-		<ul class="">
+		<ul class="grid lg:grid-cols-3 grid-flow-row-dense md:grid-cols-2 sm:grid-cols-1 gap-4">
 			{#each list as item}
 				<li class="mb-8 text-lg">
 					<!-- <code class="mr-4">{item.data.date}</code> -->
