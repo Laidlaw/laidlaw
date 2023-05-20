@@ -256,13 +256,13 @@ function parseIssue(issue) {
 	if (data.tags) tags = Array.isArray(data.tags) ? data.tags : data.tags.split(',').map(x => x.trim());
 
 	return {
-		type: 'blog', // futureproof in case you want to add other types of content
+		type: data.type?.toLowerCase() || 'blog', // futureproof in case you want to add other types of content
 		content,
 		frontmatter: data,
 		title,
 		subtitle: data.subtitle,
 		description,
-		category: data.category?.toLowerCase() || 'note', // all posts assumed to be "note"s unless otherwise specified
+		category: data.category?.toLowerCase() || 'marbles', // all posts assumed to be "note"s unless otherwise specified
 		tags,
 		image: data.image ?? data.cover_image,
 		canonical: data.canonical, // for canonical URLs of something published elsewhere

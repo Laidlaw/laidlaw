@@ -76,7 +76,7 @@
 </script>
 
 <svelte:head>
-	<title>{SITE_TITLE}'s Grandins</title>
+	<title>{SITE_TITLE}'s Lost Marbles</title>
 	<meta name="description" content={`${SITE_TITLE}'s Grandins`} />
 </svelte:head>
 
@@ -87,12 +87,12 @@
 	bg-gray-50 bg-opacity-60 py-8 text-gray-900 dark:border-gray-700 dark:bg-gray-900
 	dark:text-gray-100">
 		<h1 class="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-3xl pr-8">
-			<a href="/blog">Grandins</a>
+			<a href="/blog">Marbles</a>
 			
 		</h1>
 		<p class="mb-4 text-gray-500 dark:text-gray-400">
 				<!-- <Motivations /> -->
-				Named after <b>Temple Grandin</b>, these are little nuggets of informal synthesis. There are {items.length} of them.
+				Small highly-dimensional balls of informal synthesis. There are {items.length} of them.
 		</p>
 	</div>
 	

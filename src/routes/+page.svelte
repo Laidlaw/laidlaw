@@ -42,7 +42,7 @@
 	<div class="flex flex-col-reverse items-start sm:flex-row">
 		<div class="flex flex-col pr-8">
 			<h1 class="mb-6 text-3xl tracking-tight text-black dark:text-white md:text-5xl">{SITE_TITLE}</h1>
-			<p class="mb-4 text-gray-500 dark:text-gray-300">Welcome to my blog-in-progress / <NavLink href="/blog">Read some Grandins</NavLink></p>
+			<p class="mb-4 text-gray-500 dark:text-gray-300">Welcome to my blog-in-progress.
 			<p class="mb-4 text-gray-700 dark:text-gray-200">I started it in January '23 as a way to organize my thoughts in a public setting. If you want to know little more about me, look here. If you want to work with me, look here.</p>
 			<p class="mb-4 text-gray-600 dark:text-gray-400"></p>
 
