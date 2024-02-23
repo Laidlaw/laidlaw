@@ -1,16 +1,9 @@
 ---
 layout: test
 ---
-<script context="module">
-	// @ts-nocheck
-	import Counter from '../../components/Counter.svelte';
-
-	export { Counter };
-</script>
 
 # About **this**...
 
-<Counter />
 It's awkward, isn't it?
 
 I'm not ready to talk about myself yet.
