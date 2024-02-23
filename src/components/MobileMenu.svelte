@@ -80,7 +80,7 @@
 				<a
 					class="flex w-auto pb-4"
 					on:click={() => setTimeout(() => (isOpen = false), 300)}
-					href="/blog">Blog</a
+					href="/blog">Marbles</a
 				>
 			</li>
 			<li

@@ -76,17 +76,17 @@
 </script>
 
 <svelte:head>
-	<title>{SITE_TITLE}'s Lost Marbles</title>
-	<meta name="description" content={`${SITE_TITLE}'s Grandins`} />
+	<title>{SITE_TITLE}'s Marbles</title>
+	<meta name="description" content={`${SITE_TITLE}'s Marbles`} />
 </svelte:head>
 
 <svelte:window on:keyup={focusSearch} />
 
 <section class="mx-auto flex max-w-5xl flex-col items-start justify-center px-4 sm:px-8">
 	<div class="relative mx-auto md:flex w-full max-w-5xl items-center md:justify-between border-gray-200
-	bg-gray-50 bg-opacity-60 py-8 text-gray-900 dark:border-gray-700 dark:bg-gray-900
+	bg-gray-50 bg-opacity-60 pb-8 text-gray-900 dark:border-gray-700 dark:bg-gray-900
 	dark:text-gray-100">
-		<h1 class="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-3xl pr-8">
+		<h1 class="mb-4 text-3xl tracking-tight text-black dark:text-white md:text-5xl pr-8">
 			<a href="/blog">Marbles</a>
 			
 		</h1>

@@ -37,15 +37,12 @@
 </svelte:head>
 
 <div
-	class="flex flex-col items-start justify-center max-w-2xl px-4 pb-16 mx-auto border-gray-200 dark:border-gray-700 sm:px-8"
+	class="flex flex-col items-start justify-center max-w-5xl px-4 pb-16 mx-auto border-gray-200 dark:border-gray-700 sm:px-8"
 >
 	<div class="flex flex-col-reverse items-start sm:flex-row">
 		<div class="flex flex-col pr-8">
-			<h1 class="mb-6 text-3xl tracking-tight text-black dark:text-white md:text-5xl">{SITE_TITLE}</h1>
-			<p class="mb-4 text-gray-500 dark:text-gray-300">Welcome to my blog-in-progress.
-			<p class="mb-4 text-gray-700 dark:text-gray-200">I started it in January '23 as a way to organize my thoughts in a public setting. If you want to know little more about me, look here. If you want to work with me, look here.</p>
-			<p class="mb-4 text-gray-600 dark:text-gray-400"></p>
-
+			<h1 class="mb-6 text-3xl tracking-tight text-gray-600  dark:text-white md:text-5xl">{SITE_TITLE}</h1>
+			<p class="mb-6 text-gray-500 dark:text-gray-300 text-4xl md:text-4xl">Independent Researcher
 		</div>
 
 		<!--<div class="flex flex-col pr-8">
@@ -71,20 +68,21 @@
 			/> -->
 	</div>
 
-	<!--<section class="w-full mb-16">
-		<h3 class="mb-6 text-2xl tracking-tight text-gray-300 dark:text-gray-200 md:text-4xl">
-			Areas of Interest
+	<section class="w-full mb-16">
+		<h3 class="mb-6 text-2xl tracking-tight text-gray-400 dark:text-gray-200 md:text-3xl">
+			Hi, thanks for stopping by. I'm busy at the moment tinkering on things behind the scenes. But if you find some of prompts below appealing, I'd love to chat.
 		</h3>
 		<div class="flex flex-col gap-6 md:flex-row">
-			<FeatureCard title="Explorations in Noomorphology" href="/Noomorphology" stringData="Dec 2022" />
+			<FeatureCard title="Apple Vision Pro is cool, but do you find Spatial Computing to feel a little impoverished?" href="/an-early-manifesto-for-spatial-computing" caption="I'm working with Sloan to expand the vocabulary of extended reality design patterns. In others, shared ontologies." stringData="XR, UX, EGO" />
 			<FeatureCard
-				title="Moving to a GitHub CMS"
-				href="/moving-to-a-github-cms"
-				stringData="Jan 2022"
+				title="The Enterprise Strikes Back"
+				href="/enterprise Strikes Back"
+				caption="The silent killer of productivity in the enterprise is documentation. Folders and files too industrial. Hyperlinks are overextended. Even ChatGPT will not be able to quell the information epidemic."
+				stringData="LLMs, TfT, Doc Ops"
 			/>
-			<FeatureCard title="HTML Ipsum demo" href="/moo" stringData="Jan 2022" />
+			<FeatureCard title="Scrollspace: Experiments in Analog Spatial Computing" href="/tablescroll-an-experiment-in-analog-spatial-computing" caption="A 100ft experiment to imagine what it would be like to think on *paper*. A lot of spilled ink." stringData="Paper, OCR, Analog" />
 		</div>
-	</section> -->
+	</section>
 	<!-- <section class="w-full mb-16">
 		<pre>{JSON.stringify(speaking, null, 2)}</pre>
 	</section> -->
